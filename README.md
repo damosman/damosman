@@ -41,8 +41,8 @@ A Software Test Engineer | Designer | Quality Advocate | Quality specialist acro
 </p>
 
 <div id="github_stats" align="left">
-  <img src="https://github-readme-stats.vercel.app/api?username=damosman&count_private=true&show_icons=true&theme=radical&hide_border=true" width="50%" />
-  <img src="https://github-activity-graph.vercel.app/graph?username=damosman&theme=redical&hide_border=true" width="50%" />
+  <img src="https://github-readme-stats.vercel.app/api?username=damosman&count_private=true&show_icons=true&theme=radical&hide_border=true" />
+  <img src="https://github-activity-graph.vercel.app/graph?username=damosman&theme=redical&hide_border=true"/>
 </div>
 
 ---
