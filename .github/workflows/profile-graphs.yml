@@ -1,0 +1,37 @@
+name: Profile graphs
+
+on:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            assets/graphs/snake-light.svg?palette=github-light&color_snake=#0071E3&color_dots=#E5E5EA,#B3D4F8,#6AAAF0,#2A85E8,#0071E3
+            assets/graphs/snake-dark.svg?palette=github-dark&color_snake=#2997FF&color_dots=#2C2C2E,#0F3A66,#1760A8,#1F7FE0,#2997FF
+
+      - uses: yoshi389111/github-profile-3d-contrib@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+          SETTING_JSON: assets/graphs/3d-settings.json
+
+      - name: Commit graphs
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A assets/graphs profile-3d-contrib
+          if git commit -m "Update profile graphs"; then
+            git push
+          fi
